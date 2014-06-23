@@ -29,4 +29,16 @@ class Commuter
   def all
     commutes
   end
+
+  def commute_for(person, week, day, data)
+    output = nil
+    commutes[person].each do |commute|
+      if commute[:week] == week
+        if commute[:day] == day
+          output = commute[data]
+        end
+      end
+    end
+    output
+  end
 end

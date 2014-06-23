@@ -147,4 +147,13 @@ Kevin,1,Monday,Drive,35,52,24", :headers => true)
     commuter = Commuter.new(input)
     expect(commuter.all).to eq output
   end
+
+  it 'returns the commute for a specific person at a specific date' do
+    input = CSV.parse("Person,Week,Day,Mode,Inbound,Outbound,Distance
+Elsa,2,Monday,Drive,30,50,24
+Elsa,1,Tuesday,Drive,35,52,24", :headers => true)
+
+    commuter = Commuter.new(input)
+    expect(commuter.commute_for("Elsa", 1, "Tuesday", :inbound)).to eq 35
+  end
 end
